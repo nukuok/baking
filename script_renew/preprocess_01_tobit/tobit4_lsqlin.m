@@ -12,7 +12,7 @@ function [delta, tau] = tobit4_lsqlin(speed, spacing, acc)
 
   options = optimset('lsqlin');
   options = optimset(options,'LargeScale','off');
-  x = lsqlin(C, spacing', zeros(data_length), ones(data_length,1),[],[],[],[],[], options)
+  x = lsqlin(C, spacing', zeros(data_length), ones(data_length,1),[],[],[],[],[], options);
   % size(x)
   % size(C)
   % size(zeros(size(C,1),1))

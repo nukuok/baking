@@ -4,6 +4,7 @@ function As = data_split_equal_interval(A)
 
   data_length = length(A(1,:));
   split_num = ceil(data_length / SPLIT_LENGTH);
+  % split_num = ceil(data_length / SPLIT_LENGTH) - 1;
   As = cell(1,split_num);
   for ii = 1:split_num
     split_head = SPLIT_LENGTH * (ii - 1) + 1;
