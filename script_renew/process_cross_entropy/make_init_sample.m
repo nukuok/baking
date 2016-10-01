@@ -1,4 +1,4 @@
-function [result, partition] = make_init_sample(deltat_length)
+function [result, partition] = make_init_sample(deltat_head, deltat_tail)
   global CONFIG
   numPrms = CONFIG.make_init_sample.numPrms;
   sample1 = CONFIG.make_init_sample.sample1;
@@ -11,12 +11,20 @@ function [result, partition] = make_init_sample(deltat_length)
   alpha = CONFIG.sampling.alpha;
   
   result = cell(numPrms,1);
-  partition = [sample1, sample2, sample3, deltat_length];
+  if deltat_head == deltat_tail
+    partition = [sample1, sample2, sample3, 150];
+  else
+    partition = [sample1, sample2, sample3, deltat_tail-deltat_head];
+  end
   
   for ii = 1:numPrms
     result{ii} = 1/partition(ii) * ones(partition(ii), 1);
   end
 
+  if deltat_head == deltat_tail
+    result{4}(:,1) = 0; result{4}(deltat_head) = 1;
+  end
+  
   tic;
   
   fprintf('--------------(Patameter Information)--------------\n')

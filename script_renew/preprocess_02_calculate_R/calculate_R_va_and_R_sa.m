@@ -18,7 +18,7 @@ function [R_va, R_Sa]= calculate_R_va_and_R_sa(part_speed, part_A, delta, tau)
   R_va = zeros(100,1);
   R_Sa = zeros(100,1);
   % for jj = 1:e_r_length
-  for jj = 1:e_r_length-10
+  for jj = 1:e_r_length-30
     R_va(jj) = calculate_R_va(B,jj);
     R_Sa(jj) = calculate_R_sa(B,jj);
   end

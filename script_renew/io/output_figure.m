@@ -45,7 +45,7 @@ function Allobj = output_figure(out_dir_part, partition, prerpms, data_set, ...
   xa = (1:partition(4));
   bar(xa,sample{4});
   axis([0,partition(4),0,max(sample{4})]);
-  title('Reaction Time[(1/30)s]');
+  title('Reaction Time[(1/10)s]');
   grid on
 
   name = 'Prob';
@@ -82,8 +82,8 @@ function Allobj = output_figure(out_dir_part, partition, prerpms, data_set, ...
 
 
 				% 相対速度・車頭距離を計算
-    v1_sim(rr) = v1_sim(rr-1) + a1_sim(rr-1)*(1/30);
-    x1_sim(rr) = x1_sim(rr-1) + ((v1_sim(rr)+v1_sim(rr-1))/2)*(1/30);
+    v1_sim(rr) = v1_sim(rr-1) + a1_sim(rr-1)*(1/10);
+    x1_sim(rr) = x1_sim(rr-1) + ((v1_sim(rr)+v1_sim(rr-1))/2)*(1/10);
 
     detv_sim(rr-1) = v0(rr-1) - v1_sim(rr-1);
     s_sim(rr) = x0(rr) - x1_sim(rr);
@@ -144,9 +144,8 @@ function Allobj = output_figure(out_dir_part, partition, prerpms, data_set, ...
   scatter(s(start:TTime),detv(start:TTime))
   hold on
   scatter(s_sim(start:TTime),detv_sim(start:TTime))
-  name = '_Hysteresis';
-  no = num2str(Vehicle);
-  print('-dpng','-r300',strcat(no,name));
+  name = 'Hysteresis';
+  print('-dpng','-r300',strcat(out_dir_part,name));
 
   %% time series composition of estimation
   %errblk=zeros((TTime-start),1);
@@ -270,9 +269,8 @@ function Allobj = output_figure(out_dir_part, partition, prerpms, data_set, ...
   xlim([0 100]);
   ylim([0 40]);
   legend('Lead','Follow');
-  name = '_LocS';
-  no = num2str(Vehicle);
-  print('-dpng','-r300',strcat(no,name));
+  name = 'LocS';
+  print('-dpng','-r300',strcat(out_dir_part,name));
 
 
   figure;
@@ -353,8 +351,8 @@ function Allobj = output_figure(out_dir_part, partition, prerpms, data_set, ...
 
 
 	%% 相対速度・車頭距離を計算
-	v1_sim(rr) = v1_sim(rr-1) + a1_sim(rr-1)*(1/30);
-	x1_sim(rr) = x1_sim(rr-1) + ((v1_sim(rr)+v1_sim(rr-1))/2)*(1/30);
+	v1_sim(rr) = v1_sim(rr-1) + a1_sim(rr-1)*(1/10);
+	x1_sim(rr) = x1_sim(rr-1) + ((v1_sim(rr)+v1_sim(rr-1))/2)*(1/10);
 
 	detv_sim(rr-1) = v0(rr-1) - v1_sim(rr-1);
 	s_sim(rr) = x0(rr) - x1_sim(rr);
@@ -365,7 +363,7 @@ function Allobj = output_figure(out_dir_part, partition, prerpms, data_set, ...
       %% objFunc = sqrt(1/(TTime-start)*sum((s(start+1:TTime)-s_sim(start+1:TTime)).^(2)));
 
       %% Kesting
-      obj1 = (s(start+1:TTime)-s_sim(start+1:TTime)).^(2)./abs(s(start+1:TTime))*(1/30);
+      obj1 = (s(start+1:TTime)-s_sim(start+1:TTime)).^(2)./abs(s(start+1:TTime))*(1/10);
       obj1 = sum(obj1)/(TTime-start);
       obj2 = sum(abs(s(start+1:TTime)))/(TTime-start);
       obj2 = 1/obj2;

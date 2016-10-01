@@ -10,7 +10,7 @@ global CONFIG;
 gen_config;
 
 %% output
-out_file_dir = 'result_20160919/';
+out_file_dir = 'result_20161001/';
 [s, m, mi] = mkdir(out_file_dir);
 out_file_path = sprintf('%sresult.csv', out_file_dir);
 fid = fopen(out_file_path, 'w');
@@ -20,7 +20,8 @@ Allobj = [];
 %%
 data_list = get_data_list('data_list_modified');
 for ii = 1:length(data_list)
-% for ii = 1:1
+% for ii = 9:9
+% for ii = 5:5
 
   input_filename = data_list{ii};
   fprintf('Dealing with %s', input_filename);
@@ -32,6 +33,8 @@ for ii = 1:length(data_list)
   As = data_split_equal_interval([origin_A;si';siu']);
 
   % for jj = 1:1
+  % for jj = 6:6
+  % for jj = 4:4
   for jj = 1:length(As)
     data_set = As{jj};
     data_length = length(data_set);
@@ -46,10 +49,8 @@ for ii = 1:length(data_list)
     [part_delta, part_tau] = tobit4_lsqlin(part_speed, part_spacing, part_acc);
     [part_R_va, part_R_sa] = calculate_R_va_and_R_sa(part_speed, data_set, part_delta, part_tau);
     [deltat_head, deltat_tail] = determine_deltat_region(part_R_va, part_R_sa, data_length);
-    deltat_length = max(1, deltat_tail - deltat_head);
     
-    
-    [sample, partiton] = make_init_sample(deltat_length);
+    [sample, partiton] = make_init_sample(deltat_head, deltat_tail);
     max_iter = CONFIG.MaxIteration;
     same_to_Con = CONFIG.sampling.Con;
     pregamma = CONFIG.sampling.pregamma;
