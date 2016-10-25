@@ -10,7 +10,7 @@ global CONFIG;
 gen_config;
 
 %% output
-out_file_dir = 'result_20161001/';
+out_file_dir = 'result_20161025/';
 [s, m, mi] = mkdir(out_file_dir);
 out_file_path = sprintf('%sresult.csv', out_file_dir);
 fid = fopen(out_file_path, 'w');
@@ -19,8 +19,8 @@ Vehicle = 1;
 Allobj = [];
 %%
 data_list = get_data_list('data_list_modified');
-for ii = 1:length(data_list)
-% for ii = 9:9
+% for ii = 1:length(data_list)
+for ii = [1,8,9]
 % for ii = 5:5
 
   input_filename = data_list{ii};
@@ -30,7 +30,8 @@ for ii = 1:length(data_list)
   BND = get_BND(input_filename);
   [si, siu] = calculate_si_siu_t2lb(origin_A, BND);
 
-  As = data_split_equal_interval([origin_A;si';siu']);
+  % As = data_split_equal_interval([origin_A;si';siu']);
+  As = data_split_dynamic_0([origin_A;si';siu'],100);
 
   % for jj = 1:1
   % for jj = 6:6
@@ -69,7 +70,7 @@ for ii = 1:length(data_list)
     %% ii, jj, iteration, partition, input_filename,
     out_dir_part = create_output_folder(out_file_dir, ii, jj);
     Allobj = output_figure(out_dir_part, partition, preprms, data_set, ...
-		  sample, part_delta, part_tau, sample_here, Vehicle, Allobj);
+		  sample, part_delta, part_tau, sample_here, Vehicle, Allobj, part_R_va, part_R_sa);
     Vehicle = Vehicle + 1;
   end
 end

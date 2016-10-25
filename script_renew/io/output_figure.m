@@ -1,5 +1,5 @@
 function Allobj = output_figure(out_dir_part, partition, prerpms, data_set, ...
-		       sample, part_delta, part_tau, sample_here, Vehicle, Allobj)
+		       sample, part_delta, part_tau, sample_here, Vehicle, Allobj, R_va, R_sa)
   global CONFIG
   NumPrms = CONFIG.make_init_sample.numPrms;
 
@@ -390,6 +390,16 @@ function Allobj = output_figure(out_dir_part, partition, prerpms, data_set, ...
   name = 'map';
   print('-dpng','-r300',strcat(out_dir_part,name));
 
+  figure
+  hold on
+  plot(R_va, 'g')
+  plot(R_sa, 'b')
+  legend('v-a','s-a')
+  
+  name = 'R';
+  print('-dpng','-r300',strcat(out_dir_part,name));
+
+  
   AllV(Vehicle,1:5) = sample_here(1,1:NumPrms+1);
   AllV(Vehicle,6)=ss1;
   AllV(Vehicle,7)=ss0;
