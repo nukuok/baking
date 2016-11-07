@@ -10,7 +10,7 @@ global CONFIG;
 gen_config;
 
 %% output
-out_file_dir = 'result_20161025/';
+out_file_dir = 'result_20161107/';
 [s, m, mi] = mkdir(out_file_dir);
 out_file_path = sprintf('%sresult.csv', out_file_dir);
 fid = fopen(out_file_path, 'w');
@@ -21,6 +21,7 @@ Allobj = [];
 data_list = get_data_list('data_list_modified');
 % for ii = 1:length(data_list)
 for ii = [1,8,9]
+% for ii = [8]
 % for ii = 5:5
 
   input_filename = data_list{ii};
@@ -43,7 +44,7 @@ for ii = [1,8,9]
     part_spacing = data_set(7,:);
     part_acc = data_set(14,:);
 
-    if sum(part_acc <0.1) == 0
+    if sum(abs(part_acc) <0.1) == 0
       continue
     end
 

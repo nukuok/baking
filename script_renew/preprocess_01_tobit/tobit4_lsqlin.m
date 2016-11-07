@@ -1,28 +1,24 @@
 function [delta, tau] = tobit4_lsqlin(speed, spacing, acc)
   % x = lsqlin(C,d,A,b)
-  speed = speed(acc<0.1);
-  spacing = spacing(acc<0.1);
+  speed = speed(abs(acc)<0.1);
+  spacing = spacing(abs(acc)<0.1);
 
-  LL = @(delta, tau) -sum((spacing - tau * speed - delta) .^ 2);
+  % LL = @(delta, tau) -sum((spacing - tau * speed - delta) .^ 2);
+  %% v(1) -> delta, v(2) -> tau
+  LL = @(v) sum((spacing - v(2) * speed - v(1)) .^ 2);
+  LL5 = @(v) sum((spacing - 5 * speed - v(1)) .^ 2);
+  LL0 = @(v) sum((spacing - 0 * speed - v(1)) .^ 2);
 
-  % x = lsqlin([1,0,0;2,0,0;3,0,0],[2,4,6]',zeros(3),[1,1,1]')
-  data_length = length(speed);
-  C = zeros(data_length);
-  C(:,1) = speed';
-
-  options = optimset('lsqlin');
-  options = optimset(options,'LargeScale','off');
-  x = lsqlin(C, spacing', zeros(data_length), ones(data_length,1),[],[],[],[],[], options);
-  % size(x)
-  % size(C)
-  % size(zeros(size(C,1),1))
-  tau = x(1);
+  foundv = fminsearch(LL, [0,0])
+  delta = foundv(1)
+  tau = foundv(2)
 
   if tau > 5
-    delta = mean(spacing - 5 * speed);
+    tau = 5
+    foundv = fminsearch(LL5, [0,0])
+    delta = foundv(1)
   elseif tau < 0
-    delta = mean(spacing);
-  else
-    delta = mean(spacing - tau * speed);
-  end		   
+    tau = 0
+    foundv = fminsearch(LL0, [0,0])
+    delta = foundv(1)
 end
