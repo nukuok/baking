@@ -20,7 +20,7 @@ Allobj = [];
 %%
 data_list = get_data_list('data_list_modified');
 % for ii = 1:length(data_list)
-for ii = [1,8,9]
+for ii = [1,8,9,18,21,24,42]
 % for ii = [8]
 % for ii = 5:5
 
@@ -32,7 +32,7 @@ for ii = [1,8,9]
   [si, siu] = calculate_si_siu_t2lb(origin_A, BND);
 
   % As = data_split_equal_interval([origin_A;si';siu']);
-  As = data_split_dynamic_0([origin_A;si';siu'],100);
+  [As, index_pairs] = data_split_dynamic_0([origin_A;si';siu'],100);
 
   % for jj = 1:1
   % for jj = 6:6
@@ -66,8 +66,8 @@ for ii = [1,8,9]
 	break
       end
     end
-    fprintf(fid, 'total_id, %d, data_file,%s,file_id,%d,part_id,%d,alpha1,%f,alpha2,%f,beta,%f,time,%f,delta,%f,tau,%f\n', ...
-	    Vehicle, input_filename(1:end-1), ii, jj, preprms(1), preprms(2), preprms(3), preprms(4),part_delta, part_tau);
+    fprintf(fid, 'total_id, %d, data_file,%s,file_id,%d,part_id,%d,start_point,%d,end_point,%d,alpha1,%f,alpha2,%f,beta,%f,time,%f,delta,%f,tau,%f\n', ...
+	    Vehicle, input_filename(1:end-1), ii, jj, index_pairs(jj,1), index_pairs(jj,2), preprms(1), preprms(2), preprms(3), preprms(4),part_delta, part_tau);
     %% ii, jj, iteration, partition, input_filename,
     out_dir_part = create_output_folder(out_file_dir, ii, jj);
     Allobj = output_figure(out_dir_part, partition, preprms, data_set, ...
