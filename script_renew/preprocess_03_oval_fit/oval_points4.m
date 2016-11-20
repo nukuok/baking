@@ -1,4 +1,4 @@
-function [Xs,Ys] = oval_points(foundv, gap)
+function [Xs,Ys] = oval_points4(foundv, gap_region)
   a = foundv(1);
   b = foundv(2);
   h = foundv(3);
@@ -8,7 +8,7 @@ function [Xs,Ys] = oval_points(foundv, gap)
   rotate_X = @(X,Y) (cos(theta) * (X) - sin(theta) * (Y) + h);
   rotate_Y = @(X,Y) (cos(theta) * (Y) + sin(theta) * (X) + k);
 
-  t = [gap:gap:2*pi];
+  t = gap_region
   xs = cos(t) * a;
   ys = sin(t) * b;
 

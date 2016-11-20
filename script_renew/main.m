@@ -20,7 +20,7 @@ Allobj = [];
 %%
 data_list = get_data_list('data_list_modified');
 % for ii = 1:length(data_list)
-for ii = [1,8,9,18,21,24,42]
+for ii = 1:58
 % for ii = [8]
 % for ii = 5:5
 

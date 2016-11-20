@@ -12,7 +12,7 @@ global CONFIG;
 gen_config;
 
 %% output
-out_file_dir = 'result_20161120/';
+out_file_dir = 'result_20161120-2/';
 [s, m, mi] = mkdir(out_file_dir);
 out_file_path = sprintf('%sresult.csv', out_file_dir);
 fid = fopen(out_file_path, 'w');
@@ -23,7 +23,7 @@ Allobj = [];
 data_list = get_data_list('data_list_modified');
 % for ii = 1:length(data_list)
 % for ii = [1,8,9,18,21,24,42]
-for ii = [1:58]
+for ii = [1,5,8,9,12,13,14,17,21,24,36,40,41,45]
 % for ii = 5:5
 
   input_filename = data_list{ii};
@@ -34,8 +34,8 @@ for ii = [1:58]
   [si, siu] = calculate_si_siu_t2lb(origin_A, BND);
 
   % As = data_split_equal_interval([origin_A;si';siu']);
-  [As, index_pairs] = data_split_dynamic_0([origin_A;si';siu'],100);
-
+  [As, index_pairs] = data_split_manual([origin_A;si';siu'], ii);
+  index_pairs
   % for jj = 1:1
   % for jj = 6:6
   % for jj = 4:4
@@ -48,14 +48,19 @@ for ii = [1:58]
 
     figure
     hold on
-    oXs = part_speed
-    oYs = part_spacing
-    plot(oXs, oYs, 'bx', 'linewidth', 3)
-    result = oval_fit4(oXs, oYs)
+    plot(origin_A(4,:),origin_A(7,:),'g')
+    plot(origin_A(4,1),origin_A(7,1),'blackv','linewidth',3)
+    
+    oXs = part_speed;
+    oYs = part_spacing;
+    plot(oXs, oYs, 'bx', 'linewidth', 3);
+
+    result = oval_fit4(oXs, oYs);
     [Xs,Ys] = oval_points(result, 0.05);
     plot(Xs,Ys,'r')
     plot(result(3), result(4), 'rx', 'linewidth', 1)
-    png_name = sprintf('%s%03d-%02d.png', out_file_dir, ii, jj)
+
+    png_name = sprintf('%s%03d-%02d.png', out_file_dir, ii, jj);
     print('-dpng','-r300', png_name)
     close all
     pause(0.1)
