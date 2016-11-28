@@ -12,7 +12,7 @@ global CONFIG;
 gen_config;
 
 %% output
-out_file_dir = 'result_20161120-3/';
+out_file_dir = 'result_20161120-4/';
 [s, m, mi] = mkdir(out_file_dir);
 out_file_path = sprintf('%sresult.csv', out_file_dir);
 fid = fopen(out_file_path, 'w');
@@ -21,8 +21,8 @@ Vehicle = 1;
 Allobj = [];
 %%
 data_list = get_data_list('data_list_modified');
-%% for ii = [1,5,8,9,12,13,14,17,21,24,36,40,41,45]
-for ii = [5,45]
+for ii = [1,5,8,9,12,13,14,17,21,24,36,40,41,45]
+%% for ii = [5,45]
 
 
   input_filename = data_list{ii};
@@ -64,8 +64,8 @@ for ii = [5,45]
     close all
     pause(0.1)
 
-    fprintf(fid, 'total_id, %d, data_file,%s,file_id,%d,part_id,%d,start_point,%d,end_point,%d,center_x,%f,center_y,%f\n', ...
-	    Vehicle, input_filename(1:end-1), ii, jj, index_pairs(jj,1), index_pairs(jj,2), result(3),result(4));
+    fprintf(fid, 'total_id, %d, data_file,%s,file_id,%d,part_id,%d,start_point,%d,end_point,%d,a,%f,b,%f,h,%f,k,%f,theta,%f\n', ...
+	    Vehicle, input_filename(1:end-1), ii, jj, index_pairs(jj,1), index_pairs(jj,2), result(1),result(2),result(3),result(4),result(5));
 
     Vehicle = Vehicle + 1;
   end
