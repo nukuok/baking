@@ -1,0 +1,32 @@
+# part I
+cat extracted/1.csv | grep uv | cut -f 1,2 -d "," > filtered_out_uv/1.csv
+cat extracted/2.csv | grep uv | cut -f 1,2 -d "," > filtered_out_uv/2.csv
+cat extracted/3.csv | grep uv | cut -f 1,2 -d "," > filtered_out_uv/3.csv
+cat extracted/4.csv | grep uv | cut -f 1,2 -d "," > filtered_out_uv/4.csv
+cat extracted/5.csv | grep uv | cut -f 1,2 -d "," > filtered_out_uv/5.csv
+cat extracted/6.csv | grep uv | cut -f 1,2 -d "," > filtered_out_uv/6.csv
+cat extracted/7.csv | grep uv | cut -f 1,2 -d "," > filtered_out_uv/7.csv
+cat extracted/8.csv | grep uv | cut -f 1,2 -d "," > filtered_out_uv/8.csv
+cat extracted/9.csv | grep uv | cut -f 1,2 -d "," > filtered_out_uv/9.csv
+cat extracted/10.csv | grep uv | cut -f 1,2 -d ","> filtered_out_uv/10.csv
+cat extracted/11.csv | grep uv | cut -f 1,2 -d "," > filtered_out_uv/11.csv
+cat extracted/12.csv | grep uv | cut -f 1,2 -d "," > filtered_out_uv/12.csv
+cat extracted/13.csv | grep uv | cut -f 1,2 -d "," > filtered_out_uv/13.csv
+cat extracted/14.csv | grep uv | cut -f 1,2 -d "," > filtered_out_uv/14.csv
+cat extracted/15.csv | grep uv | cut -f 1,2 -d "," > filtered_out_uv/15.csv
+cat extracted/16.csv | grep uv | cut -f 1,2 -d "," > filtered_out_uv/16.csv
+cat extracted/17.csv | grep uv | cut -f 1,2 -d "," > filtered_out_uv/17.csv
+cat extracted/18.csv | grep uv | cut -f 1,2 -d "," > filtered_out_uv/18.csv
+cat extracted/19.csv | grep uv | cut -f 1,2 -d "," > filtered_out_uv/19.csv
+cat extracted/20.csv | grep uv | cut -f 1,2 -d "," > filtered_out_uv/20.csv
+cat extracted/27.csv | grep uv | cut -f 1,2 -d "," > filtered_out_uv/27.csv
+cat extracted/28.csv | grep uv | cut -f 1,2 -d "," > filtered_out_uv/28.csv
+cat extracted/29.csv | grep uv | cut -f 1,2 -d "," > filtered_out_uv/29.csv
+cat extracted/30.csv | grep uv | cut -f 1,2 -d "," > filtered_out_uv/30.csv
+# part II
+cat extracted/21.csv | grep uv | cut -f 1,3 -d "," > filtered_out_uv/21.csv
+cat extracted/22.csv | grep uv | cut -f 1,3 -d "," > filtered_out_uv/22.csv
+cat extracted/23.csv | grep uv | cut -f 1,3 -d "," > filtered_out_uv/23.csv
+cat extracted/24.csv | grep uv | cut -f 1,3 -d "," > filtered_out_uv/24.csv
+cat extracted/25.csv | grep uv | cut -f 1,3 -d "," > filtered_out_uv/25.csv
+cat extracted/26.csv | grep uv | cut -f 1,3 -d "," > filtered_out_uv/26.csv

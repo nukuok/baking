@@ -1,0 +1,6 @@
+cut -f  1,59,2 -d ',' syu_off.csv > extracted/21.csv
+cut -f  1,59,2 -d ',' syu_on_85.csv > extracted/22.csv
+cut -f  1,59,2 -d ',' taro_off.csv > extracted/23.csv
+cut -f  1,59,2 -d ',' taro_on_85.csv > extracted/24.csv
+cut -f  1,59,2 -d ',' uchida_off.csv > extracted/25.csv
+cut -f  1,59,2 -d ',' uchida_on_85.csv > extracted/26.csv
