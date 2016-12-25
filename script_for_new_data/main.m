@@ -51,13 +51,15 @@ for ii = 1:30
 
   figure
   plot(F,J,'linewidth',2)
-  axis([-1000,6000,min(J)-20,max(J)+20]);
+  %axis([-1000,6000,min(J)-20,max(J)+20]);
+  axis([-1000,6000,0,350]);
   out_fig_path = sprintf('%sdata_%02d_figure_1.png', out_file_dir, ii);
   print('-dpng','-r300', out_fig_path);
   
   figure
   plot(H,J,'x')
-  axis([-10,50,min(J)-20,max(J)+20]);
+  %axis([-10,50,min(J)-20,max(J)+20]);
+  axis([-10,50,0,350]);
   out_fig_path = sprintf('%sdata_%02d_figure_2.png', out_file_dir, ii);
   print('-dpng','-r300', out_fig_path);
   

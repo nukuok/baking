@@ -13,7 +13,7 @@ gen_config;
 
 %% output
 % out_file_dir = 'result_20161204/';
-out_file_dir = '/home/nukuok/Desktop/baking/script_for_new_data/oval_20161224';
+out_file_dir = '/home/nukuok/Desktop/baking/script_for_new_data/oval_20161224/';
 [s, m, mi] = mkdir(out_file_dir);
 out_file_path = sprintf('%sresult.csv', out_file_dir);
 fid = fopen(out_file_path, 'w');
@@ -31,14 +31,15 @@ for ii = 1:26
 
   input_filename = data_list{ii};
   fprintf('Dealing with %s', input_filename);
-  origin_A = file_input(input_filename(1:end-1));
+  origin_A = file_input2(input_filename(1:end-1));
 
   BND = get_BND(input_filename);
-  [si, siu] = calculate_si_siu_t2lb(origin_A, BND);
+  % [si, siu] = calculate_si_siu_t2lb(origin_A, BND);
 
   % As = data_split_equal_interval([origin_A;si';siu']);
-  [As, index_pairs] = data_split_manual2([origin_A;si';siu'], ii);
-  index_pairs
+  % [As, index_pairs] = data_split_manual2([origin_A;si';siu'], ii);
+  [As, index_pairs] = data_split_dynamic_1(origin_A, ii);
+  size(origin_A)
   index_pairs
   % for jj = 1:1
   % for jj = 6:6
@@ -46,14 +47,14 @@ for ii = 1:26
   for jj = 1:length(As)
     data_set = As{jj};
     data_length = length(data_set);
-    part_speed = data_set(4,:);
-    part_spacing = data_set(6,:);
+    part_speed = data_set(1,:);
+    part_spacing = data_set(2,:);
 %    part_acc = data_set(14,:);
 
     figure
     hold on
-    plot(origin_A(4,:),origin_A(7,:),'g')
-    plot(origin_A(4,1),origin_A(7,1),'blackv','linewidth',3)
+    plot(origin_A(1,:),origin_A(2,:),'g')
+    plot(origin_A(1,1),origin_A(2,1),'blackv','linewidth',3)
     
     oXs = part_speed;
     oYs = part_spacing;

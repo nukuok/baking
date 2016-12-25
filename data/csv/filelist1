@@ -18,7 +18,9 @@ cut -f  1,33,38 -d ',' Shintani\(201612151719\)_off.csv > extracted/17.csv
 cut -f  1,33,38 -d ',' Shintani\(201612151714\)_on_75.csv > extracted/18.csv
 cut -f  1,33,38 -d ',' Tanaka\(201612101710\)_off.csv > extracted/19.csv
 cut -f  1,33,38 -d ',' Tanaka\(201612101706\)_on_85.csv > extracted/20.csv
-cut -f  1,33,38 -d ',' [filename1].csv > extracted/27.csv
-cut -f  1,33,38 -d ',' [filename2].csv > extracted/28.csv
-cut -f  1,33,38 -d ',' [filename3].csv > extracted/29.csv
-cut -f  1,33,38 -d ',' [filename4].csv > extracted/30.csv
+cut -f  1,33,38 -d ',' No.13\(201612161659\)_on_75.csv > extracted/27.csv
+cut -f  1,33,38 -d ',' No.13\(201612161703\)_off.csv > extracted/28.csv
+cut -f  1,33,38 -d ',' Sou\(201612161721\)_on_75.csv > extracted/29.csv
+cut -f  1,33,38 -d ',' Sou\(201612161725\)_off.csv > extracted/30.csv
+cut -f  1,33,38 -d ',' Tonton\(201612191540\)_on_75.csv > extracted/31.csv
+cut -f  1,33,38 -d ',' Tonton\(201612191545\)_off.csv > extracted/32.csv

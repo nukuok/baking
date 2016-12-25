@@ -28,3 +28,5 @@
 /home/nukuok/Desktop/baking/data/csv/filtered_out_uv/28.csv
 /home/nukuok/Desktop/baking/data/csv/filtered_out_uv/29.csv
 /home/nukuok/Desktop/baking/data/csv/filtered_out_uv/30.csv
+/home/nukuok/Desktop/baking/data/csv/filtered_out_uv/31.csv
+/home/nukuok/Desktop/baking/data/csv/filtered_out_uv/32.csv
