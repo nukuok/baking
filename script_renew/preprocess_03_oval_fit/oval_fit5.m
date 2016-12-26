@@ -1,5 +1,5 @@
 function result = oval_fit5(Xs, Ys)
-  to_search = @(v) oval_equation_diff4(v(1),v(2),v(3),v(4),v(5),Xs,Ys);
+  to_search = @(v) oval_equation_diff5(v(1),v(2),v(3),v(4),v(5),Xs,Ys);
 
 
 %  lb = [1,1,0,0,-pi/3];
@@ -32,8 +32,8 @@ function result = oval_fit5(Xs, Ys)
   % ub = [max(Xs)-min(Xs),max(Ys)-min(Ys),mean(Xs)+5,mean(Ys)+5,pi];
 
   init = [0.2,0.2,mean(Xs),mean(Ys),0];
-  lb = [0.1,0.1,mean(Xs)-3,mean(Ys)-10,-pi];
-  ub = [max(Xs)-min(Xs),max(Ys)-min(Ys),mean(Xs)+3,mean(Ys)+10,pi];
+  lb = [0.1,0.1,mean(Xs)-3,mean(Ys)-10,-pi/4];
+  ub = [max(Xs)-min(Xs),max(Ys)-min(Ys),mean(Xs)+3,mean(Ys)+10,pi/4];
   
   options = optimset('fmincon');
   options = optimset(options,'Algorithm','sqp');
