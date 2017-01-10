@@ -12,7 +12,7 @@ global CONFIG;
 gen_config;
 
 %% output
-out_file_dir = '/home/nukuok/Desktop/baking/script_for_new_data/oval_20170108_merge_n_all/';
+out_file_dir = '/home/nukuok/Desktop/baking/script_for_new_data/oval_20170108_merge_n_all_fix_arc/';
 [s, m, mi] = mkdir(out_file_dir);
 out_file_path = sprintf('%sresult.csv', out_file_dir);
 fid = fopen(out_file_path, 'w');
@@ -22,7 +22,7 @@ Allobj = [];
 %%
 data_list = get_data_list('/home/nukuok/Desktop/baking/script_for_new_data/filelist_20170108');
 
-for ii = 1:26
+for ii = 4
 
   input_filename = data_list{ii};
   fprintf('Dealing with %s', input_filename);

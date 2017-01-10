@@ -52,7 +52,7 @@ function [As, index_pairs_all] = data_split_dynamic_20170108_4(A,min_length)
   row = size(index_pairs,1);
   index_pairs_group = {}
   index_pairs_group{1} = add_column(index_pairs,1);
-  to_merge = 10
+  to_merge = 20;
   for ii = 2:to_merge
     if row < ii
       break

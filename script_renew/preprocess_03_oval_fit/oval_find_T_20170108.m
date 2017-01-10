@@ -40,9 +40,11 @@ function [delta, fi, arc, omega] = oval_find_T_20170108(a,b,h,k,theta,Xs,Ys,peri
   end
 
   if arc_end <= arc_start
-    arc = arc_end + 2 *pi - arc_start;
+    % arc = arc_end + 2 *pi - arc_start;
+    arc = arc_start - arc_end;
   else
-    arc = arc_end - arc_start;
+    % arc = arc_end - arc_start;
+    arc = arc_start + 2*pi - arc_end;
   end
   % omega = arc / 2 * pi;
   omega = arc / period;
