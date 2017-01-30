@@ -1,4 +1,4 @@
-function [As, index_pairs_all] = data_split_dynamic_20170115(A,min_length)%,merge_check)
+function [As, index_pairs_all] = data_split_dynamic_20170128(A,min_length,png_path)%,merge_check)
   add_column = @(Vector, value) [Vector, ones(size(Vector,1),1) * value]
 
   angle_calc = @(x,y) x(1)*y(2) - x(2)*y(1);
@@ -18,10 +18,10 @@ function [As, index_pairs_all] = data_split_dynamic_20170115(A,min_length)%,merg
     sin_value_line(ii) = sin_value_calc(vector(:,ii)', vector(:,ii+1)');
   end
 
-  figure
-  plot(line(1,:), line(2,:))
-  hold on
-  plot(line(1,1), line(2,1), 'blackv', 'LineWidth', 3)
+  % figure
+  % plot(line(2,:), line(1,:))
+  % hold on
+  % plot(line(2,1), line(1,1), 'blackv', 'LineWidth', 3)
   
   current = 2;
   index_pairs=[];
@@ -29,9 +29,9 @@ function [As, index_pairs_all] = data_split_dynamic_20170115(A,min_length)%,merg
     if sin_value_line(ii) > 0.0 | cos_value_line(ii) < 0.5 | ii == vector_length-1
       if ii - current >= min_length
 	index_pairs=[index_pairs;current, ii];
-	plot(line(1,current:ii), line(2,current:ii), 'r')
-	plot(line(1,current), line(2,current), 'ro', 'LineWidth',2)
-	plot(line(1,ii), line(2,ii), 'bo', 'LineWidth',2)
+	% plot(line(2,current:ii), line(1,current:ii), 'r')
+	% plot(line(2,current), line(1,current), 'ro', 'LineWidth',2)
+	% plot(line(2,ii), line(1,ii), 'bo', 'LineWidth',2)
       end
       current = ii + 1;
     end
